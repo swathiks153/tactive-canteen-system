@@ -68,7 +68,7 @@ def test_insufficient_stock(client):
         "/order",
         data={
             "food_id": "1",
-            "quantity": "20"
+            "quantity": "100"
         }
     )
 
