@@ -54,9 +54,7 @@ def order():
         ), 400
 
 
-    if quantity > food["stock"]:
-        connection.close()
-        return "Insufficient stock", 400
+ 
 
     total = food["price"] * quantity
     remaining_stock = food["stock"] - quantity
