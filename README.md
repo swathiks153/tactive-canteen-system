@@ -68,3 +68,10 @@ TACTIVE CANTEEN SYSTEM/
 
 ### Test Results
 ![Tests Passed](evidence/tests_passed.png)
+
+## How to Run
+
+### 1. Create Virtual Environment
+
+```bash
+python -m venv venv
