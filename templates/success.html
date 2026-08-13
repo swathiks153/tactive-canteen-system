@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Successful - Tactive Canteen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .success-card {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            padding: 40px;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #e8f8ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+        }
+
+        h1 {
+            color: #198754;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .order-summary {
+            background: #f7f7fb;
+            border-radius: 15px;
+            padding: 22px;
+            text-align: left;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #777;
+        }
+
+        .value {
+            font-weight: bold;
+        }
+
+        .total {
+            color: #667eea;
+            font-size: 22px;
+        }
+
+        .stock {
+            color: #198754;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .button {
+            display: block;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .secondary {
+            background: #f1f1f1;
+            color: #555;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-card">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h1>Order Successful!</h1>
+
+    <p class="subtitle">
+        Thank you for ordering from Tactive Canteen 🎉
+    </p>
+
+    <div class="order-summary">
+
+        <div class="row">
+            <span class="label">Food</span>
+            <span class="value">
+                {{ food['name'] }}
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">Quantity</span>
+            <span class="value">
+                {{ quantity }}
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">Total Amount</span>
+            <span class="value total">
+                ₹{{ total }}
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">Remaining Stock</span>
+            <span class="value stock">
+                {{ remaining_stock }}
+            </span>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <a class="button primary" href="/">
+            🛒 Place Another Order
+        </a>
+
+        <a class="button secondary" href="/orders">
+            📋 View Order History
+        </a>
+
+    </div>
+
+    <div class="footer">
+        Tactive Canteen System • Powered by Flask & SQLite
+    </div>
+
+</div>
+
+</body>
+</html>

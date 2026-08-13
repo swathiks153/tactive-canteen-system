@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Error - Tactive Canteen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .error-card {
+            background: white;
+            width: 100%;
+            max-width: 520px;
+            padding: 40px;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+        }
+
+        .error-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #fff0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+        }
+
+        h1 {
+            color: #dc3545;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .tip {
+            background: #f7f7fb;
+            padding: 15px;
+            border-radius: 12px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: block;
+            padding: 14px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102,126,234,0.4);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="error-card">
+
+    <div class="error-icon">
+        ⚠️
+    </div>
+
+    <h1>Oops!</h1>
+
+    <p class="message">
+        {{ message }}
+    </p>
+
+    <div class="tip">
+        💡 Please check your order details and try again.
+    </div>
+
+    <a class="button" href="/">
+        ← Back to Canteen
+    </a>
+
+    <div class="footer">
+        Tactive Canteen System • Powered by Flask & SQLite
+    </div>
+
+</div>
+
+</body>
+</html>

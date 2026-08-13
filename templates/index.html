@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tactive Canteen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #222;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        .order-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .food-card {
+            border: 2px solid #eee;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+            transition: 0.3s;
+            background: #fff;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border-color: #667eea;
+        }
+
+        .food-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .food-name {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .stock {
+            display: inline-block;
+            background: #e8f8ee;
+            color: #198754;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .form-section {
+            margin-top: 10px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+
+        select:focus,
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .order-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .order-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102,126,234,0.4);
+        }
+
+        .history {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .history:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 25px;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            body {
+                padding: 25px 12px;
+            }
+
+            .order-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🍴 Tactive Canteen</h1>
+        <p>Fresh food • Easy ordering • Happy students</p>
+    </div>
+
+    <div class="order-box">
+
+        <div class="food-grid">
+
+            {% for food in foods %}
+
+            <div class="food-card">
+
+                {% if food['name'] == 'Burger' %}
+                    <div class="food-icon">🍔</div>
+                {% elif food['name'] == 'Pizza' %}
+                    <div class="food-icon">🍕</div>
+                {% else %}
+                    <div class="food-icon">🥪</div>
+                {% endif %}
+
+                <div class="food-name">
+                    {{ food['name'] }}
+                </div>
+
+                <div class="price">
+                    ₹{{ food['price'] }}
+                </div>
+
+                <span class="stock">
+                    📦 {{ food['stock'] }} available
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="form-section">
+
+            <form action="/order" method="POST">
+
+                <label>Select Food</label>
+
+                <select name="food_id">
+                    {% for food in foods %}
+                        <option value="{{ food['id'] }}">
+                            {{ food['name'] }} — ₹{{ food['price'] }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <label>Quantity</label>
+
+                <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    value="1"
+                    required
+                >
+
+                <button class="order-button" type="submit">
+                    🛒 Place Order
+                </button>
+
+            </form>
+
+            <a class="history" href="/orders">
+                📋 View Order History →
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Tactive Canteen System • Powered by Flask & SQLite
+    </div>
+
+</div>
+
+</body>
+</html>
