@@ -28,23 +28,23 @@ A simple web-based canteen ordering system developed using Flask and SQLite. The
 
 ## Project Structure
 
-```text
 TACTIVE CANTEEN SYSTEM/
 │
 ├── app.py
 ├── database.py
-├── canteen.db
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
 │
 ├── templates/
 │   ├── index.html
+│   ├── orders.html
 │   ├── success.html
-│   └── orders.html
+│   └── error.html
 │
 ├── tests/
 │   └── test_app.py
 │
 ├── docs/
+│
 └── evidence/
