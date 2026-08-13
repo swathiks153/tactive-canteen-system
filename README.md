@@ -48,3 +48,23 @@ TACTIVE CANTEEN SYSTEM/
 ├── docs/
 │
 └── evidence/
+
+## Screenshots
+
+### Home Page
+![Home Page](evidence/home_page.png)
+
+### Successful Order
+![Successful Order](evidence/order_success.png)
+
+### Order History
+![Order History](evidence/order_history.png)
+
+### Insufficient Stock
+![Insufficient Stock](evidence/insufficient_stock.png)
+
+### Zero Quantity Validation
+![Zero Quantity](evidence/zero_quantity.png)
+
+### Test Results
+![Tests Passed](evidence/tests_passed.png)
