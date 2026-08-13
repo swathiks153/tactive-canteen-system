@@ -2,46 +2,91 @@
 
 ## 1. Project Overview
 
-Tactive Canteen System is a Flask-based web application for managing food ordering in a canteen.
+Tactive Canteen System is a simple web-based food ordering application developed using Flask and SQLite.
 
-The system allows users to select food items, specify quantities, place orders, update stock, and view order history.
+The system allows users to view available food items, select quantities, place orders, and view their previous orders. The system also manages food stock automatically after successful orders.
 
-## 2. System Components
+## 2. Objectives
 
-### Frontend
+- Provide a simple online canteen ordering system.
+- Display available food items, prices, and stock.
+- Allow users to place food orders.
+- Validate order quantities.
+- Prevent orders when stock is insufficient.
+- Automatically update stock after successful orders.
+- Store order details in an SQLite database.
+- Provide an order history page.
+- Test important application scenarios using pytest.
 
-The frontend is implemented using HTML and CSS with Flask Jinja2 templates.
+## 3. Technologies Used
 
-Main pages:
+- Python
+- Flask
+- SQLite
+- HTML
+- CSS
+- Jinja2
+- Pytest
 
-- `index.html` - Food selection and order placement
-- `success.html` - Order confirmation
-- `orders.html` - Order history
+## 4. System Features
 
-### Backend
+### Food Listing
+The home page displays the available food items along with their prices and stock quantities.
 
-The backend is implemented using Python and Flask.
+### Order Placement
+Users can select a food item and enter the required quantity to place an order.
 
-Main application file:
+### Order Validation
+The application validates the requested quantity before processing an order.
 
-- `app.py`
+### Stock Management
+After a successful order, the corresponding food stock is automatically reduced.
 
-It handles:
+### Insufficient Stock Handling
+Orders are rejected when the requested quantity is greater than the available stock.
 
-- Home page
-- Order processing
-- Quantity validation
-- Stock validation
-- Total calculation
-- Stock updates
-- Order storage
-- Order history
+### Invalid Quantity Handling
+Zero or invalid quantities are rejected by the application.
 
-### Database
+### Order History
+Successfully placed orders are stored in SQLite and can be viewed through the order history page.
 
-SQLite is used for persistent data storage.
+## 5. System Workflow
 
-Database file:
+1. User opens the canteen application.
+2. Available food items are displayed.
+3. User selects a food item.
+4. User enters the required quantity.
+5. The application validates the quantity.
+6. The application checks available stock.
+7. If stock is sufficient, the order is processed.
+8. The total order amount is calculated.
+9. Food stock is updated.
+10. Order details are stored in SQLite.
+11. The user receives an order confirmation.
+12. Previous orders can be viewed from the order history page.
+
+## 6. Project Structure
 
 ```text
-canteen.db
+TACTIVE CANTEEN SYSTEM/
+│
+├── app.py
+├── database.py
+├── requirements.txt
+├── README.md
+├── PROJECT_DOCUMENTATION.md
+├── .gitignore
+│
+├── templates/
+│   ├── index.html
+│   ├── orders.html
+│   ├── success.html
+│   └── error.html
+│
+├── tests/
+│   └── test_app.py
+│
+├── docs/
+│
+└── evidence/
