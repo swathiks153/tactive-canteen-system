@@ -24,6 +24,8 @@ def order():
 
     food_id = request.form["food_id"]
     quantity = int(request.form["quantity"])
+    if quantity > 10:
+        return "Maximum order quantity is 10", 400
 
     connection = get_connection()
 
@@ -53,8 +55,6 @@ def order():
             message="Sorry, there isn't enough stock available for this order."
         ), 400
 
-
- 
 
     total = food["price"] * quantity
     remaining_stock = food["stock"] - quantity

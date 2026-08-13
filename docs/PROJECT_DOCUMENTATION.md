@@ -90,3 +90,62 @@ TACTIVE CANTEEN SYSTEM/
 ├── docs/
 │
 └── evidence/
+
+## AI-Assisted Change Loop
+
+The project was developed using an iterative AI-assisted workflow.
+
+### 1. Initial Feature
+The application was required to reject an order when the requested quantity exceeded the available food stock.
+
+### 2. AI-Assisted Change
+The insufficient-stock handling was reviewed and modified during development. The expected HTTP response for this validation was 400 (Bad Request).
+
+### 3. Deliberate RED Test
+To verify that the automated test could detect an incorrect implementation, the response status was intentionally changed from 400 to 200.
+
+The test suite then produced:
+
+- 1 failed
+- 3 passed
+- `test_insufficient_stock` failed with `assert 200 == 400`
+
+This confirmed that the test detected the incorrect behavior.
+
+### 4. Correction
+The response status was restored from 200 to 400.
+
+### 5. GREEN Test
+The complete pytest suite was executed again and all four tests passed.
+
+This demonstrated the development cycle:
+
+**Feature → AI-assisted change → RED test → Correction → GREEN test**
+
+## 7. System Architecture
+
+The Tactive Canteen System follows a simple web application architecture.
+
+```text
+User
+  |
+  v
+HTML/Jinja2 Templates
+  |
+  v
+Flask Application (app.py)
+  |
+  +------------------+
+  |                  |
+  v                  v
+Order Processing   Validation
+  |                  |
+  +--------+---------+
+           |
+           v
+     SQLite Database
+       (canteen.db)
+           |
+           v
+     Updated Stock
+     + Order Details

@@ -73,4 +73,14 @@ def test_insufficient_stock(client):
     )
 
     assert response.status_code == 400
+def test_maximum_quantity(client):
+    response = client.post(
+        "/order",
+        data={
+            "food_id": "1",
+            "quantity": "11"
+        }
+    )
+
+    assert response.status_code == 400
     
