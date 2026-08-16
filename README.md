@@ -433,6 +433,11 @@ Input validation
 Error handling
 Automated test execution
 AI-assisted development process
+
+### Video Link
+
+[Watch the 5-Minute Tactive Canteen System Demo](https://drive.google.com/file/d/1kW9dL4dcGkERuEDC1NDPU5df7WZmCkhA/view?usp=sharing)
+
 22. Expected Application Behaviour
 Valid Order
 If the requested quantity is valid and stock is available:
